@@ -85,13 +85,20 @@ public class CsvConverter
             }
             else
             {
-                int j = 0;
-                for(int i : indexes)
-                {
-                    tmp[j] = nextline[i];
-                    j++;
+                try
+                {    int j = 0;
+                
+                    for(int i : indexes)
+                    {
+                        tmp[j] = nextline[i];
+                        j++;
+                    }
+                    Utils.printArray(tmp, separator);
                 }
-                Utils.printArray(tmp, separator);
+                catch(ArrayIndexOutOfBoundsException ex)
+                {
+                    System.err.println("SKIPPED LINE ");
+                }
             }
         }
     }
